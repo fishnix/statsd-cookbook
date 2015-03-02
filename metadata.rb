@@ -1,0 +1,13 @@
+name             'statsd'
+maintainer       'E Camden Fisher'
+maintainer_email 'camden@northpage.com'
+license          'Apache 2.0'
+description      'Installs/Configures statsd-cookbook'
+long_description 'Installs/Configures statsd-cookbook'
+version          '0.1.0'
+
+depends 'yum', '~> 3.4.1'
+depends 'yum-epel', '~> 0.5.2'
+depends 'build-essential', '~> 2.1.3'
+depends 'rvm', '~> 0.9.2'
+depends 'selinux', '~> 0.8.0'

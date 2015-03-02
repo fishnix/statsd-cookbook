@@ -1,0 +1,21 @@
+---
+bind: <%= @bind %>
+port: <%= @port %>
+
+<% if @flush_protocols.include?('graphite') -%>
+flush_interval: <%= @flush_interval %>
+graphite_host: <%= @graphite_host %>
+graphite_port: <%= @graphite_port %>
+<% end %>
+
+<% if @flush_protocols.include?('mongo') -%>
+mongo_host: <%= @mongo_host %>
+mongo_database: <%= @mongo_database %>
+retentions:
+<% @mongo_retentions.each do |r| -%>
+    - name: r['name']
+      seconds: r['seconds']
+      capped: r['capped']
+      cap_bytes: r['cap_bytes']
+<% end %>
+<% end %>

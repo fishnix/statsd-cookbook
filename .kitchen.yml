@@ -1,0 +1,27 @@
+---
+driver:
+  name: vagrant
+  config:
+    require_chef_omnibus: :latest
+  customize:
+    memory: 2048
+    cpus: 2
+
+provisioner:
+  name: chef_zero
+  encrypted_data_bag_secret_key_path: test/integration/default/tk_encrypted_data_bag_secret
+  data_bags_path: test/integration/default/data_bags
+  environment: kitchen
+
+
+platforms:
+  - name: centos-6.6
+
+suites:
+  - name: default
+    run_list:
+      - recipe[yum]
+      - recipe[yum-epel]
+      - recipe[rvm::vagrant]
+      - recipe[statsd::default]
+    attributes:
